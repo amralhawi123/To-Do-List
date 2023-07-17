@@ -84,9 +84,9 @@ body{
 
 @media (max-width:667px) {
   .update-btn{
-    margin: 10px 15;
-    width:60px;
-    height: 25px;
-    border-radius: 15px;
+    margin: 15px 20;
+    width:80px;
+    height: 30px;
+    border-radius: 20px;
   }
 }
