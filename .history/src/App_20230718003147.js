@@ -54,8 +54,8 @@ const App = () => {
         <button className='update-btn btn' onClick={()=> updateTodoToshow("active")}>Active</button>
         <button className='update-btn btn' onClick={()=> updateTodoToshow("complete")}>Complete</button>
       </div>
-      {toDos.some(todo => todo.complete) ? 
-            <button className='all-btn btn' onClick={removeAllTodocomplete}>Remove all complete todos</button> 
+      {todos.some(todo => todo.complete) ? 
+            <button className='all-btn btn' onClick={removeAllTodosThatAreComplete}>Remove all complete todos</button> 
             : null}
       
       <button className='all-btn btn' onClick={()=> {

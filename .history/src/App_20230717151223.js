@@ -54,9 +54,9 @@ const App = () => {
         <button className='update-btn btn' onClick={()=> updateTodoToshow("active")}>Active</button>
         <button className='update-btn btn' onClick={()=> updateTodoToshow("complete")}>Complete</button>
       </div>
-      {toDos.some(todo => todo.complete) ? 
-            <button className='all-btn btn' onClick={removeAllTodocomplete}>Remove all complete todos</button> 
-            : null}
+      {
+        toDos.map((todo)=> todo.complete === true ? ((<button className='all-btn btn' onClick={removeAllTodocomplete}>Remove all Complete Todo</button>)) : null)
+      }
       
       <button className='all-btn btn' onClick={()=> {
         setToDos(
