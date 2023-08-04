@@ -1,17 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import ToDoForm from './components/ToDoForm'
 import Todo from './components/Todo'
 import './App.css'
 
 const App = () => {
 
-  const initialValue = localStorage.getItem("to-do")? JSON.parse(localStorage.getItem("to-do")):[]
-  const [toDos, setToDos] = useState(initialValue)
+  let [toDos, setToDos] = useState([])
 
-  useEffect(() => {
-    localStorage.setItem("to-do", JSON.stringify(toDos))
-  }, [toDos])
-
+  useE
   const [todoToshow, setTodoToshow] = useState("all")
   const [toggleAllComplete, setToggleAllComplete] = useState(true)
 
@@ -42,12 +38,9 @@ const App = () => {
         }
       }))
   }
-  
   if(todoToshow === "active"){
-    // eslint-disable-next-line no-const-assign
     toDos = toDos.filter((todo) => !todo.complete)
   }else if(todoToshow === "complete"){
-    // eslint-disable-next-line no-const-assign
     toDos = toDos.filter((todo) => todo.complete)
   }
   return (

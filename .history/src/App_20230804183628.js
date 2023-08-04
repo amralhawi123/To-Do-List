@@ -5,8 +5,8 @@ import './App.css'
 
 const App = () => {
 
-  const initialValue = localStorage.getItem("to-do")? JSON.parse(localStorage.getItem("to-do")):[]
-  const [toDos, setToDos] = useState(initialValue)
+  const initialValue = localStorage.getItem("to-do")?JSON.
+  const [toDos, setToDos] = useState([])
 
   useEffect(() => {
     localStorage.setItem("to-do", JSON.stringify(toDos))
@@ -42,12 +42,9 @@ const App = () => {
         }
       }))
   }
-  
   if(todoToshow === "active"){
-    // eslint-disable-next-line no-const-assign
     toDos = toDos.filter((todo) => !todo.complete)
   }else if(todoToshow === "complete"){
-    // eslint-disable-next-line no-const-assign
     toDos = toDos.filter((todo) => todo.complete)
   }
   return (

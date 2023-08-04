@@ -47,7 +47,6 @@ const App = () => {
     // eslint-disable-next-line no-const-assign
     toDos = toDos.filter((todo) => !todo.complete)
   }else if(todoToshow === "complete"){
-    // eslint-disable-next-line no-const-assign
     toDos = toDos.filter((todo) => todo.complete)
   }
   return (

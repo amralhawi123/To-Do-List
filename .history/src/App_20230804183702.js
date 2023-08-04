@@ -1,11 +1,17 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import ToDoForm from './components/ToDoForm'
 import Todo from './components/Todo'
 import './App.css'
 
 const App = () => {
 
-  let [toDos, setToDos] = useState([])
+  const initialValue = localStorage.getItem("to-do")? JSON.parse(localStorage.getItem("to-do")):[]
+  const [toDos, setToDos] = useState(initialValue)
+
+  useEffect(() => {
+    localStorage.setItem("to-do", JSON.stringify(toDos))
+  }, [toDos])
+
   const [todoToshow, setTodoToshow] = useState("all")
   const [toggleAllComplete, setToggleAllComplete] = useState(true)
 
@@ -54,9 +60,9 @@ const App = () => {
         <button className='update-btn btn' onClick={()=> updateTodoToshow("active")}>Active</button>
         <button className='update-btn btn' onClick={()=> updateTodoToshow("complete")}>Complete</button>
       </div>
-      {
-        toDos.map((todo)=> todo.complete === true ? ((<button className='all-btn btn' onClick={removeAllTodocomplete}>Remove all Complete Todo</button>)) : null)
-      }
+      {toDos.some(todo => todo.complete) ? 
+            <button className='all-btn btn' onClick={removeAllTodocomplete}>Remove all complete todos</button> 
+            : null}
       
       <button className='all-btn btn' onClick={()=> {
         setToDos(
